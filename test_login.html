@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Login Page</title>
+    <script>
+        function validateLogin(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var message = document.getElementById("message");
+            var dashboard = document.getElementById("dashboard");
+            
+            if (username === "testuser" && password === "testpass") {
+                message.style.display = "none";
+                dashboard.style.display = "block";
+            } else {
+                message.innerText = "Invalid username or password";
+                message.style.color = "red";
+                message.style.display = "block";
+                dashboard.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Login Page</h2>
+    <form onsubmit="validateLogin(event)">
+        <input type="text" id="username" placeholder="Username" required>
+        <br>
+        <input type="password" id="password" placeholder="Password" required>
+        <br>
+        <button id="login-btn" type="submit">Login</button>
+    </form>
+    <p id="message" style="display: none;"></p>
+    
+    <div id="dashboard" style="display: none;">
+        <h2>Dashboard</h2>
+        <p>Welcome, testuser!</p>
+    </div>
+</body>
+</html>
